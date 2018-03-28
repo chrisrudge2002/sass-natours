@@ -72,7 +72,7 @@
         font-size: $default-font-size;
         padding: 3px;
         text-decoration: none;
-        transform: all .2s;
+        transition: all .2s;
     }
 
     &:hover {
