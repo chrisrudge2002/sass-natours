@@ -7,6 +7,10 @@
     text-align: center;
     transition: transform .3s;
     
+    @include respond(tab-port) {
+        padding: 2rem;
+    }
+
     &:hover {
         transform: translateY(-1.5rem) scale(1.03);
     }
@@ -18,5 +22,9 @@
         font-size: 6rem;
         margin-bottom: .5rem;
         -webkit-background-clip: text;
+
+        @include respond(tab-port) {
+            margin-bottom: 0;
+        }
     }
 }

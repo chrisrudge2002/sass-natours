@@ -9,17 +9,37 @@
     transform: skewX(-12deg);
     width: 75%;
 
+    @include respond(tab-port) {
+        padding: 4rem;
+        padding-left: 7rem;
+        width: 100%;
+    }
+
+    @include respond(phone) {
+        transform: skewX(0);
+    }
+
     &__shape {
         background-color: orangered;
-        -webkit-clip-path: circle(50% at 50% 50%);
-        clip-path: circle(50% at 50% 50%);
+        border-radius: 50%;
         float: left;
         height: 15rem;
+        overflow: hidden;
         position: relative;
-        -webkit-shape-outside: circle(50% at 50% 50%);
-        shape-outside: circle(50% at 50% 50%);
-        transform: translateX(-3rem)  skewX(12deg);
+        transform: translateX(-3rem) skewX(12deg);
         width: 15rem;
+        
+        @supports(clip-path: circle(50% at 50% 50%)) or (-webkit-clip-path: circle(50% at 50% 50%)) {
+            border-radius: unset;
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            -webkit-shape-outside: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%);
+        }
+
+        @include respond(phone) {
+            transform: translateX(-3rem) skewX(0);
+        }
     }
 
     &__image {
@@ -31,6 +51,10 @@
 
     &__text {
         transform: skewX(12deg);
+
+        @include respond(phone) {
+            transform: skewX(0);
+        }
     }
 
     &__caption {

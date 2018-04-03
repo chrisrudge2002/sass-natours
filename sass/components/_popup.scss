@@ -1,4 +1,6 @@
 .popup {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     background-color: rgba($colour-black, .8);
     height: 100vh; 
     left: 0;
@@ -9,6 +11,10 @@
     visibility: hidden;
     width: 100%;
     z-index: 9999;
+
+    @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+        background-color: rgba($colour-black, .3);
+    }
 
     &__content {
         @include absCenter;
@@ -21,6 +27,14 @@
         transform: translate(-50%, -50%) scale(.25);
         transition: all .5s .2s;
         width: 75%;
+
+        @include respond(tab-port) {
+            margin: 5rem;
+            left: 0;
+            top: 0;
+            transform: translate(0);
+            width: unset;
+        }
     }
 
     &__left {
@@ -62,6 +76,10 @@
     &:target &__content {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
+
+        @include respond(tab-port) {
+            transform: translate(0);
+        }
     }
 
     &__close {
